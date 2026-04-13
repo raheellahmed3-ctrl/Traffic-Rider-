@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", "Rajdhani", sans-serif;
+  
+  --color-background: #0d0d0d;
+  --color-accent: #f5a623;
+  --color-surface: #161616;
+  --color-border-custom: #2a2a2a;
+  --color-speed: #00e5ff;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-sans antialiased selection:bg-accent selection:text-background;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display uppercase tracking-wider;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-background px-6 py-3 font-display font-bold uppercase tracking-[0.1em] rounded-[3px] transition-all duration-300 hover:shadow-[0_0_12px_#f5a623] active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply border border-accent text-accent px-6 py-3 font-display font-bold uppercase tracking-[0.1em] rounded-[3px] transition-all duration-300 hover:bg-accent hover:text-background active:scale-95;
+  }
+  
+  .card-custom {
+    @apply bg-surface border border-border-custom rounded-[3px] p-6;
+  }
+
+  .stat-number {
+    @apply font-mono text-speed;
+  }
+}
+
+/* Road lane divider animation */
+@keyframes road-motion {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.road-line {
+  @apply absolute left-1/2 -translate-x-1/2 w-1 h-20 bg-white/20;
+  animation: road-motion 1.5s linear infinite;
+}
